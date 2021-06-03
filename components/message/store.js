@@ -1,29 +1,41 @@
-const MongoClient = require('mongodb').MongoClient;
-const model = require("./model")
+const Model = require('./model');
 
-const uri = "mongodb+srv://JavierReivajGomez:<password>@cluster0.ps4fu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
-
-function addMessage (message) {
-    const MyMessage = new Model (message);
-    MyMessage.save()
+function addMessage(message) {
+  const myMessage = new Model(message);
+  myMessage.save();
 }
 
-function getMessage() {
-    return list;
+async function getMessages(filterUser) {
+  let filter = {};
+  if(filterUser !== null) {
+    filter = { user: filterUser }; 
+  }
+  const messages = await Model.find(filter);
+  return messages
+}
+
+async function updateText(id, message) {
+  const foundmessage = await model.findOne({
+    _id: id
+  })
+
+  foundmessage.message = message;
+  const newMessage = await foundmessage.save()
+  return newMessage;
 }
 
 
+function removeMessage(id) {
+  return Model.deleteOne({
+    _id: id
+  });
+}
 
 module.exports = {
-    add: addMessage,
-    list: getMessage,
-    //get
-    //update
-    //delete
-}
+  add: addMessage,
+  list: getMessages,
+  updateText: updateText,
+  remove: removeMessage,
+  //get
+  // delete
+};
