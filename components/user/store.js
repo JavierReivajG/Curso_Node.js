@@ -14,6 +14,6 @@ const Model = require('./model');
 
 module.exports = {
   add: addUser,
-  list: getUsers,
+  list: getUsers, 
 
 };
