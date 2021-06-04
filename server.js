@@ -1,19 +1,19 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+const bodyParser = require('body-parser');
 
 const db = require('./db');
 
-const router = require("./network/routes")
+const router = require('./network/routes');
 
-db('');
+db('mongodb+srv://JavierReivajGomez:Palonitas111@cluster0.ps4fu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 
 var app = express();
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
-router(app)
+router(app);
 
-app.use("/app", express.static("public"))
+app.use('/app', express.static('public'));
 
-app.listen(3000)
-console.log("la app esta escuchando en http://localhost:3000")
+app.listen(3000);
+console.log('La aplicación está escuchando en http://localhost:3000');

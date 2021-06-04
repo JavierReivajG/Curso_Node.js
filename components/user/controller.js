@@ -1,10 +1,10 @@
-const store = require("./store")
+const store = require('./store');
 
 function addUser(name) {
-    if(!name) {
-        return Promise.reject("invalid name");
+    if (!name) {
+        return Promise.reject('Invalid name');
     }
-    
+
     const user = {
         name,
     };
@@ -12,7 +12,7 @@ function addUser(name) {
 }
 
 function listUsers() {
-    return store.list()
+    return store.list();
 }
 
 module.exports = {
