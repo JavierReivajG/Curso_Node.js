@@ -8,18 +8,14 @@ function addUser(name) {
     const user = {
         name,
     };
-
     return store.add(user);
 }
 
-function getUsers() {
-    return new Promise ((resolve, reject) =>{
-        resolve(store.list())
-    })
+function listUsers() {
+    return store.list()
 }
-
 
 module.exports = {
     addUser,
-    getUsers,
+    listUsers,
 }

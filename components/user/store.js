@@ -1,4 +1,3 @@
-const { getUser } = require('./controller');
 const Model = require('./model');
 
   function addUser(user) {
@@ -7,13 +6,11 @@ const Model = require('./model');
   }
 
 
-  async function getUsers() {
-    const users = await Model.find();
-    return users
+  function listUsers() {
+    return Model.find()
   }
 
 module.exports = {
   add: addUser,
-  list: getUsers, 
-
+  list: listUsers, 
 };
