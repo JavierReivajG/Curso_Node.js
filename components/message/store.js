@@ -13,7 +13,7 @@ async function getMessages(filterUser) {
       filter = { user: filterUser }; 
     }
     Model.find(filter)
-    .populate('user')
+    .populate('user') 
     .exec((error, populated) => {
       if (error) {
         reject(error);
